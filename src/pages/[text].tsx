@@ -10,12 +10,20 @@ import { useRouter } from 'next/router'
 import styles from "../styles/top.module.scss"
 
 import { Notification, KIND } from "baseui/notification"
+import { Input } from "baseui/input"
+import {Search} from 'baseui/icon'
+import {Button} from 'baseui/button'
 
 // identicon lib
 import BoringAv from "boring-avatars"
 
 
 const Page = () => {
+    const inputRef = React.useRef<HTMLInputElement>(null)
+    const handleClick = (e) =>  {
+        e = inputRef.current.value
+        window.location.assign(`/${e}`)
+    }
     const router = useRouter()
     const { text } = router.query
     const name: string = text as string
@@ -30,6 +38,18 @@ const Page = () => {
                 <Notification  kind={KIND.warning}>
                     {() => "This is a demo version under development. Basically, it does not work properly."}
                 </Notification>
+                </div>
+                <div className={styles.input_wrap}>
+                <Input
+                    endEnhancer={<Search size="18px" />}
+                    placeholder="Input your name😘"
+                    inputRef={inputRef}
+                />
+                <div id="go">
+                <Button onClick={handleClick}>
+                    GoGo!
+                </Button>
+                </div>
                 </div>
                 <div></div>
                 <svg width="200" height="200" data-jdenticon-value={text}></svg>
