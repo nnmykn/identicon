@@ -9,11 +9,19 @@ import Script from 'next/script'
 import styles from "../styles/top.module.scss"
 
 import { Notification, KIND } from "baseui/notification"
+import { Input } from "baseui/input"
+import {Search} from 'baseui/icon'
+import {Button} from 'baseui/button'
 
 // identicon lib
 import BoringAv from "boring-avatars"
 
 const Page = () => {
+    const inputRef = React.useRef<HTMLInputElement>(null)
+    const handleClick = (e) =>  {
+        e = inputRef.current.value
+        window.location.assign(`/${e}`)
+    }
     return (
         <div>
             <Head>
@@ -34,44 +42,19 @@ const Page = () => {
                     <button className={styles.button}><span>JP site</span></button>
                 </a></Link>
                 <div></div>
-                <svg width="200" height="200" data-jdenticon-value="helloWorld"></svg>
-                <div></div>
-                <div id='identicon'></div>
-                <div></div>
-                <BoringAv
-                    size={200}
-                    name="HelloWorld"
-                    variant="beam"
-                    colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+                <div className={styles.input_wrap}>
+                <Input
+                    endEnhancer={<Search size="18px" />}
+                    placeholder="Input your name😘"
+                    inputRef={inputRef}
                 />
-                <div></div>
-                <BoringAv
-                    size={200}
-                    name="HelloWorld"
-                    variant="pixel"
-                    colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-                />
-                <div></div>
-                <BoringAv
-                    size={200}
-                    name="HelloWorld"
-                    variant="sunset"
-                    colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-                />
-                <div></div>
-                <BoringAv
-                    size={200}
-                    name="HelloWorld"
-                    variant="ring"
-                    colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-                />
-                <div></div>
-                <BoringAv
-                    size={200}
-                    name="HelloWorld"
-                    variant="bauhaus"
-                    colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-                />
+                <div id="go">
+                <Button onClick={handleClick}>
+                    GoGo!
+                </Button>
+                </div>
+                </div>
+                <Script src="/js/gogogo.js" />
                 <Script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.1/dist/jdenticon.min.js" />
             </main>
         </div>
