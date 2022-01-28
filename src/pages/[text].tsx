@@ -52,44 +52,39 @@ const Page = () => {
                 </div>
                 </div>
                 <div></div>
-                <svg width="200" height="200" data-jdenticon-value={text}></svg>
-                <div></div>
-                <div id='identicon'></div>
-                <div></div>
+                <div className={styles.icons}>
+                <svg width="200" height="200" data-jdenticon-value={String(text)}></svg>
                 <BoringAv
                     size={200}
                     name={String(text)}
                     variant="beam"
                     colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
                 />
-                <div></div>
                 <BoringAv
                     size={200}
                     name={String(text)}
                     variant="pixel"
                     colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
                 />
-                <div></div>
                 <BoringAv
                     size={200}
                     name={String(text)}
                     variant="sunset"
                     colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
                 />
-                <div></div>
                 <BoringAv
                     size={200}
                     name={String(text)}
                     variant="ring"
                     colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
                 />
-                <div></div>
                 <BoringAv
                     size={200}
                     name={String(text)}
                     variant="bauhaus"
                     colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
                 />
+                </div>
                 <Script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.1/dist/jdenticon.min.js" />
             </main>
         </div>
